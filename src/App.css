@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  border: 1px solid gray;
+  border-radius: 10px;
 }
 
 .App-logo {
@@ -35,4 +40,51 @@
   to {
     transform: rotate(360deg);
   }
+}
+.TodoItem-complete a{
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+.TodoItem{
+ margin: auto;
+  padding: 5px;
+ position: relative;
+ border-top:1px solid gray;
+}
+a{
+  text-decoration: none;
+  
+ 
+}
+a:hover{
+  text-decoration: none !important;
+}
+.TodoItem-complete .facheckcircle {
+  color: green;
+  opacity: 1;
+  position: absolute;
+  right: 450px;
+  top: 10px;
+
+}
+ .facheckcircle{
+  color: #282c34;
+  position: absolute;
+  right: 450px;
+  top: 10px;
+  font-size: 20px;
+}
+.Header> input:focus{
+  border: none;
+}
+.Header> input{
+  border: none;
+  margin-left: 0;
+  width: 85%;
+  padding: 10px;
+ 
+ 
+}
+.Header{
+  border-bottom:1px solid gray ;
 }

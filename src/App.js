@@ -1,26 +1,102 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import {} from 'bootstrap-4-react';
+import Todolist from './components/Todolist'
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+class App extends Component {
+ constructor(props) {
+   super(props);
+   this.state ={
+   newItem:'',
+    todoItems : [
+      {
+        id: 1,
+        name: "Home",
+        icon: "fa fa-home",isComplete:false
+      },
+      {
+        id: 2,
+        name: "deal",
+        icon: "fa fa-gift",isComplete:false
+      }
+    ]
+  }
+  this.onKeyUp =this.onKeyUp.bind(this);
+  this.onChange=this.onChange.bind(this);
+ }
+   
+ showMenuBar = () => {
+  const {todoItems}=this.state;
+  if(todoItems.length>0){
+    return todoItems.map((item, index) => {
+      return <Todolist key={item.id} item={item}
+      onClick={this.onItemClicked(item)} />;
+    });
+  }
+    
+  if(todoItems.length === 0) {
+    return <p>nothing here</p>
+  } 
+};
+onItemClicked(item) {
+  return (event)=>{
+    const isComplete= item.isComplete;
+ const {todoItems}=this.state;
+    const index = todoItems.indexOf(item);
+    this.setState({
+      todoItems:[
+        ...todoItems.slice(0, index),
+        {
+          ...item,
+          isComplete:!isComplete
+        },
+        ...todoItems.slice(index+1)
+      ]
+    })
+  }
+}
+onKeyUp(event){
+  console.log(event.keyCode)
+  if(event.keyCode ===13){
+    let text = event.target.value;
+  if(!text){
+    return;
+  }
+  text= text.trim();
+  if(!text){
+    return;
+  }
+  this.setState({
+    todoItems:[
+      {name:text,isComplete:false},
+      ...this.state.todoItems
+    ]
+  })
+  }
+  
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+}
+onChange(event){
+  this.setState({
+    newItem:event.target.value
+  })
+}
+  render() {
+  const {newItem}=this.state;
+   
+    return (
+      <div className='App' onClick={this.onItemClicked}>
+        <div className='Header'>
+          <input type='text' placeholder='add todolist' onKeyUp={this.onKeyUp} onChange={this.onChange} value={newItem}/>
+          <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon>
+          
+        </div>
+           {this.showMenuBar()}
+           
+      </div>
+    );
+  }
 }
 
 export default App;
