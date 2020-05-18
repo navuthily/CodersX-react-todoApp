@@ -10,16 +10,7 @@ class App extends Component {
    this.state ={
    newItem:'',
     todoItems : [
-      {
-        id: 1,
-        name: "Home",
-        icon: "fa fa-home",isComplete:false
-      },
-      {
-        id: 2,
-        name: "deal",
-        icon: "fa fa-gift",isComplete:false
-      }
+     
     ]
   }
   this.onKeyUp =this.onKeyUp.bind(this);
