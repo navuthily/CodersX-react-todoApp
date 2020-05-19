@@ -15,6 +15,7 @@ class App extends Component {
   }
   this.onKeyUp =this.onKeyUp.bind(this);
   this.onChange=this.onChange.bind(this);
+  this.onAdd= this.onAdd.bind(this);
  }
    
  showMenuBar = () => {
@@ -68,6 +69,23 @@ onKeyUp(event){
   
 
 }
+onAdd(event) {
+  
+  event.preventDefault()
+  var text = event.target.value;
+  console.log(text);
+  if (this.state.name !== '')
+  {
+    this.setState({
+      todoItems:[
+        {name:text,isComplete:false},
+        ...this.state.todoItems
+      ]
+    })
+
+  }
+}
+
 onChange(event){
   this.setState({
     newItem:event.target.value
@@ -75,13 +93,11 @@ onChange(event){
 }
   render() {
   const {newItem}=this.state;
-   
     return (
       <div className='App' onClick={this.onItemClicked}>
         <div className='Header'>
           <input type='text' placeholder='add todolist' onKeyUp={this.onKeyUp} onChange={this.onChange} value={newItem}/>
-          <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon>
-          
+         <button onClick={this.onAdd} onChange={this.onChange}type="submit"> <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon></button>
         </div>
            {this.showMenuBar()}
            
