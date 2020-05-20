@@ -28,7 +28,9 @@ class App extends Component {
   }
     
   if(todoItems.length === 0) {
-    return <p>nothing here</p>
+    return <div className='nothing-here'>
+         
+           </div>
   } 
 };
 onItemClicked(item) {
@@ -118,7 +120,7 @@ onRemoveItem(item){
     return (
       <div className='App' onClick={this.onItemClicked}>
         <div className='Header'>
-          <input type='text' placeholder='add todolist' onKeyUp={this.onKeyUp} onChange={this.onChange} value={newItem} ref={input => this.newItem =input}/>
+          <input type='text' className='input-for-add'placeholder='Let add todolist' onKeyUp={this.onKeyUp} onChange={this.onChange} value={newItem} ref={input => this.newItem =input}/>
          <button onClick={this.onAdd}  className='add' onChange={this.onChange}type="submit"> <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon></button>
         </div>
         

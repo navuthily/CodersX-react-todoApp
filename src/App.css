@@ -2,9 +2,11 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
-  border: 1px solid gray;
+  width: 300px;
+  border: 0.5px solid #cccfcd;
   border-radius: 10px;
+  background-color: #e8f8fa;
+  font-weight: bolder;
 }
 
 .App-logo {
@@ -49,7 +51,7 @@
  margin: auto;
   padding: 5px;
  position: relative;
- border-top:1px solid gray;
+ border-top:0.1px solid #cccfcd;
 }
 a{
   text-decoration: none;
@@ -61,16 +63,19 @@ a:hover{
 }
 .TodoItem-complete .facheckcircle {
   color: green;
+  background-color: honeydew;
   opacity: 1;
   position: absolute;
-  right: 450px;
+  right: 260px;
   top: 10px;
 
 }
  .facheckcircle{
-  color: #282c34;
+  color: #fff;
+  background-color: grey;
+  border-radius:50% ;
   position: absolute;
-  right: 450px;
+  right: 260px;
   top: 10px;
   font-size: 20px;
 }
@@ -86,17 +91,39 @@ a:hover{
  
 }
 .Header{
-  border-bottom:1px solid gray ;
+  border-bottom:0.1px solid #cccfcd ;
 }
 .add{
   border-radius: 50%;
   color: green;
 }
 .remove{
-color:#9e0529;
+color: grey;
 background-color: transparent;
 border: none;
  font-size:20px;
  position: absolute;
-  left: 445px;
+  left: 260px;
+}
+.nothing-here{
+  color: grey;
+ background-image: unset;
+ background-repeat: no-repeat;
+  height: 100px;
+  background-size: cover;
+  background-image: url('https://scontent.fdad3-1.fna.fbcdn.net/v/t1.0-9/68888192_2448951581866790_2708297439307104256_o.jpg?_nc_cat=106&_nc_sid=dd9801&_nc_ohc=kXsr-CskAf8AX-UOgp_&_nc_ht=scontent.fdad3-1.fna&oh=35d0ac1f8c70c0442dea22e9382aac22&oe=5EEC2116');
+}
+.input-for-add{
+  color: gray;
+  background-color:#e8f8fa;
+  text-align: center;
+  font-weight: bold;
+}
+.TodoItem a{
+  color: #0d7a27;
+}
+h6{
+  padding: 0;
+  margin: 0;
+  display: inline;
 }

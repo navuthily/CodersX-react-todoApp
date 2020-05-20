@@ -12,7 +12,7 @@ class Todolist extends Component {
     return (
       <div className={className } >
         <FontAwesomeIcon onClick={onClick} className='facheckcircle' icon={faCheckCircle} />
-        <a className="p-2 text-dark work " id="anan" href="#"><i  className={item.icon}></i>{item.name}</a>
+        <a className="p-2  work " id="anan" href="#"><i  className={item.icon}></i><span><h6>{item.name}</h6></span></a>
         <button className='remove'  onClick ={onRemove}><FontAwesomeIcon icon={faTimesCircle}></FontAwesomeIcon>     </button>
       </div>
     );
