@@ -17,13 +17,13 @@ class App extends Component {
   this.onChange=this.onChange.bind(this);
   this.onAdd= this.onAdd.bind(this);
  }
-   
+  
  showMenuBar = () => {
   const {todoItems}=this.state;
   if(todoItems.length>0){
     return todoItems.map((item, index) => {
       return <Todolist key={item.id} item={item}
-      onClick={this.onItemClicked(item)} />;
+      onClick={this.onItemClicked(item)}  onRemove={(e)=>this.onRemoveItem(item)}/>;
     });
   }
     
@@ -34,7 +34,7 @@ class App extends Component {
 onItemClicked(item) {
   return (event)=>{
     const isComplete= item.isComplete;
- const {todoItems}=this.state;
+    const {todoItems}=this.state;
     const index = todoItems.indexOf(item);
     this.setState({
       todoItems:[
@@ -51,7 +51,8 @@ onItemClicked(item) {
 onKeyUp(event){
   console.log(event.keyCode)
   if(event.keyCode ===13){
-    let text = event.target.value;
+    let text = this.newItem.value;
+    console.log(text);
   if(!text){
     return;
   }
@@ -72,7 +73,15 @@ onKeyUp(event){
 onAdd(event) {
   
   event.preventDefault()
-  var text = event.target.value;
+ 
+  var text = this.newItem.value;
+  if(!text){
+    return;
+  }
+  text= text.trim();
+  if(!text){
+    return;
+  }
   console.log(text);
   if (this.state.name !== '')
   {
@@ -85,21 +94,36 @@ onAdd(event) {
 
   }
 }
-
 onChange(event){
   this.setState({
     newItem:event.target.value
   })
 }
+onRemoveItem(item){
+  const newItem =this.state.todoItems.filter(todoItems=>{
+    return todoItems !==item;
+  })
+  this.setState({
+    todoItems:[...newItem]
+  })
+  if(newItem.length ===0){
+    this.setState({
+      message:'No item on your list, add some'
+    })
+  }
+}
+
   render() {
   const {newItem}=this.state;
     return (
       <div className='App' onClick={this.onItemClicked}>
         <div className='Header'>
-          <input type='text' placeholder='add todolist' onKeyUp={this.onKeyUp} onChange={this.onChange} value={newItem}/>
+          <input type='text' placeholder='add todolist' onKeyUp={this.onKeyUp} onChange={this.onChange} value={newItem} ref={input => this.newItem =input}/>
          <button onClick={this.onAdd} onChange={this.onChange}type="submit"> <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon></button>
         </div>
+        
            {this.showMenuBar()}
+           
            
       </div>
     );
