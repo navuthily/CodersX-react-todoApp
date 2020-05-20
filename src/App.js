@@ -119,7 +119,7 @@ onRemoveItem(item){
       <div className='App' onClick={this.onItemClicked}>
         <div className='Header'>
           <input type='text' placeholder='add todolist' onKeyUp={this.onKeyUp} onChange={this.onChange} value={newItem} ref={input => this.newItem =input}/>
-         <button onClick={this.onAdd} onChange={this.onChange}type="submit"> <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon></button>
+         <button onClick={this.onAdd}  className='add' onChange={this.onChange}type="submit"> <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon></button>
         </div>
         
            {this.showMenuBar()}

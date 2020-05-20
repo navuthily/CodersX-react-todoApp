@@ -88,3 +88,15 @@ a:hover{
 .Header{
   border-bottom:1px solid gray ;
 }
+.add{
+  border-radius: 50%;
+  color: green;
+}
+.remove{
+color:#9e0529;
+background-color: transparent;
+border: none;
+ font-size:20px;
+ position: absolute;
+  left: 445px;
+}
